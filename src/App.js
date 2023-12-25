@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 
 function App() {
@@ -12,6 +11,7 @@ function App() {
         frameborder="0"
         //allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         allowfullscreen
+        title="test"
       /> 
         
       </header>

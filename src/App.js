@@ -1,22 +1,35 @@
 import './App.css';
+import { useWakeLock } from 'react-screen-wake-lock';
 
 function App() {
+  const { isSupported, released, request, release } = useWakeLock({
+    onRequest: () => alert('Screen Wake Lock: requested!'),
+    onError: () => alert('An error happened 💥'),
+    onRelease: () => alert('Screen Wake Lock: released!'),
+  });
+
   return (
     <div className="App">
       <header className="App-header">
-      <iframe
-        width='100%'
-        height='auto'
-        src={'https://www.youtube.com/embed/ScMzIvxBSi4?si=E79c-iQDCSD4Z3TM'}
-        frameborder="0"
-        //allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        allowfullscreen
-        title="test"
-      /> 
-        
+      <div>
+      <p>
+        Screen Wake Lock API supported: <b>{`${isSupported}`}</b>
+        <br />
+        Released: <b>{`${released}`}</b>
+      </p>
+      <button
+        type="button"
+        onClick={() => (released === false ? release() : request())}
+      >
+        {released === false ? 'Release' : 'Request'}
+      </button>
+    </div>
+
       </header>
     </div>
   );
 }
 
 export default App;
+
+

@@ -2,20 +2,20 @@ import './App.css';
 import { useWakeLock } from 'react-screen-wake-lock';
 
 function App() {
-  const { isSupported, request } = useWakeLock();
+  const { isSupported: isWakeLockSupported, request: requestWakeLock } = useWakeLock();
 
   return (
     <div className="App">
       <header className="App-header">
       <div>
       <p>
-        Screen Wake Lock API supported: <b>{`${isSupported}`}</b>
+        Screen Wake Lock API supported: <b>{`${isWakeLockSupported}`}</b>
         <br />
       
       </p>
       <button
         type="button"
-        onClick={() => (request())}
+        onClick={() => (requestWakeLock())}
       >
         {'Request'}
       </button>
